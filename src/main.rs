@@ -21,7 +21,7 @@ struct Backend {
 #[tower_lsp::async_trait]
 impl LanguageServer for Backend {
     async fn initialize(&self, _params: InitializeParams) -> Result<InitializeResult> {
-        let text_document_sync = Some(TextDocumentSyncCapability::Kind(TextDocumentSyncKind::FULL));
+        let text_document_sync = Some(TextDocumentSyncCapability::Kind(TextDocumentSyncKind::INCREMENTAL));
 
         let semantic_tokens_provider = Some(
             SemanticTokensServerCapabilities::SemanticTokensOptions(SemanticTokensOptions {
